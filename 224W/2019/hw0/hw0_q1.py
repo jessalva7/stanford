@@ -76,6 +76,38 @@ def count_reciprocated_edges(wikiGraph:snap.TNGraph) -> (int):
             count_reciprocated += 1
     return count_reciprocated 
 
+def zero_out_degree_node(wikiGraph:snap.TNGraph) -> (int):
+
+    count_zero_out_degree = 0
+    for node in wikiGraph.Nodes():
+        if node.GetOutDeg() == 0:
+            count_zero_out_degree += 1
+    return count_zero_out_degree
+
+def zero_in_degree_node(wikiGraph:snap.TNGraph) -> (int):
+
+    count_zero_in_degree = 0
+    for node in wikiGraph.Nodes():
+        if node.GetInDeg() == 0:
+            count_zero_in_degree += 1
+    return count_zero_in_degree
+
+def more_than_x_out_degree_node(wikiGraph:snap.TNGraph, x: int) -> (int):
+
+    count_more_than_x_out_degree = 0
+    for node in wikiGraph.Nodes():
+        if node.GetOutDeg() > x:
+            count_more_than_x_out_degree += 1
+    return count_more_than_x_out_degree
+
+def more_than_x_in_degree_node(wikiGraph:snap.TNGraph, x: int) -> (int):
+
+    count_more_than_x_in_degree = 0
+    for node in wikiGraph.Nodes():
+        if node.GetInDeg() > x:
+            count_more_than_x_in_degree += 1
+    return count_more_than_x_in_degree
+
 
 wikiGraph = extract_Graph()
 print("WikiGraph: Nodes %d, Edges %d" % (wikiGraph.GetNodes(), wikiGraph.GetEdges()))
@@ -83,3 +115,7 @@ print("WikiGraph: %d Nodes have self-edges" % (count_self_edge(wikiGraph) ) )
 print("WikiGraph: has %d directed edges" % ( wikiGraph.GetEdges() - count_self_edge(wikiGraph) ) )
 print("WikiGraph: has %d undirected edges" % ( count_undirected_edges(wikiGraph) ) )
 print("WikiGraph: has %d reciprocated edges" % ( count_reciprocated_edges(wikiGraph) ) )
+print("WikiGraph: has %d zero out degree nodes" % ( zero_out_degree_node(wikiGraph) ) )
+print("WikiGraph: has %d zero in degree nodes" % ( zero_in_degree_node(wikiGraph) ) )
+print("WikiGraph: has %d nodes with more than %d in degree" % ( more_than_x_out_degree_node(wikiGraph,10), 10 ) )
+print("WikiGraph: has %d nodes with more than %d out degree" % ( more_than_x_in_degree_node(wikiGraph,10), 10 ) )
