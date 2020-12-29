@@ -3,10 +3,9 @@ try:
     version = snap.Version
     print("SUCCESS, your version of Snap.py is %s" % (version))
 except:
-    pass
+    exit(0)
 
 def extract_Graph():
-
     wikiGraph = snap.TNGraph.New()
     f = open("Wiki-Vote.txt", "r")
     nodes = set()
@@ -108,14 +107,15 @@ def more_than_x_in_degree_node(wikiGraph:snap.TNGraph, x: int) -> (int):
             count_more_than_x_in_degree += 1
     return count_more_than_x_in_degree
 
+if __name__ == '__main__':
 
-wikiGraph = extract_Graph()
-print("WikiGraph: Nodes %d, Edges %d" % (wikiGraph.GetNodes(), wikiGraph.GetEdges()))
-print("WikiGraph: %d Nodes have self-edges" % (count_self_edge(wikiGraph) ) )
-print("WikiGraph: has %d directed edges" % ( wikiGraph.GetEdges() - count_self_edge(wikiGraph) ) )
-print("WikiGraph: has %d undirected edges" % ( count_undirected_edges(wikiGraph) ) )
-print("WikiGraph: has %d reciprocated edges" % ( count_reciprocated_edges(wikiGraph) ) )
-print("WikiGraph: has %d zero out degree nodes" % ( zero_out_degree_node(wikiGraph) ) )
-print("WikiGraph: has %d zero in degree nodes" % ( zero_in_degree_node(wikiGraph) ) )
-print("WikiGraph: has %d nodes with more than %d in degree" % ( more_than_x_out_degree_node(wikiGraph,10), 10 ) )
-print("WikiGraph: has %d nodes with more than %d out degree" % ( more_than_x_in_degree_node(wikiGraph,10), 10 ) )
+    wikiGraph = extract_Graph()
+    print("WikiGraph: Nodes %d, Edges %d" % (wikiGraph.GetNodes(), wikiGraph.GetEdges()))
+    print("WikiGraph: %d Nodes have self-edges" % (count_self_edge(wikiGraph) ) )
+    print("WikiGraph: has %d directed edges" % ( wikiGraph.GetEdges() - count_self_edge(wikiGraph) ) )
+    print("WikiGraph: has %d undirected edges" % ( count_undirected_edges(wikiGraph) ) )
+    print("WikiGraph: has %d reciprocated edges" % ( count_reciprocated_edges(wikiGraph) ) )
+    print("WikiGraph: has %d zero out degree nodes" % ( zero_out_degree_node(wikiGraph) ) )
+    print("WikiGraph: has %d zero in degree nodes" % ( zero_in_degree_node(wikiGraph) ) )
+    print("WikiGraph: has %d nodes with more than %d in degree" % ( more_than_x_out_degree_node(wikiGraph,10), 10 ) )
+    print("WikiGraph: has %d nodes with more than %d out degree" % ( more_than_x_in_degree_node(wikiGraph,10), 10 ) )
