@@ -25,6 +25,9 @@ y = [ map[i] for i in x ]
 
 
 slope, intercept = np.polyfit( np.log10(np.array(x[1:])), np.log10(np.array(y[1:])), 1 )
+
+print( " log y = %d * log x + %d" % ( slope, intercept ) )
+
 linear_regressor_line = slope * np.log10(np.array(x[1:])) + intercept
 plt.figure(figsize=(4, 3), dpi=70)
 plt.loglog(x, y )
