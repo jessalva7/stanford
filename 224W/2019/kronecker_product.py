@@ -10,4 +10,4 @@ def nth_kron_product(arr : np.ndarray, n : int) -> np.ndarray:
 
 
 a = np.array([[1,1],[1,0]])
-print(nth_kron_product(a,20).shape)
+print(nth_kron_product(a,13).shape)

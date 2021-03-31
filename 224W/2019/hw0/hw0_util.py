@@ -3,6 +3,7 @@ try:
     version = snap.Version
     print("SUCCESS, your version of Snap.py is %s" % (version))
 except:
+    print("FAILURE!")
     exit(0)
 
 def extract_Graph( filename: str) -> snap.TNGraph:
